@@ -16,35 +16,29 @@
     :root { --bg: #f8fafc; --jbs-blue: #004a99; --card-border: #e2e8f0; }
     html, body { height: 100%; margin: 0; padding: 0; font-family: 'Inter', sans-serif; background: var(--bg); color: #0f172a; overflow-x: hidden; }
 
-    /* Header Superior Fixo e Ocupação 100% da Tela */
     .header-bar { height: 60px; background: linear-gradient(90deg, #003366 0%, #004a99 100%); color: white; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); width: 100%; box-sizing: border-box; }
-    
     .main-wrapper { padding: 16px 20px; width: 100%; box-sizing: border-box; }
 
     .page-title { font-size: 22px; font-weight: 800; color: #0f172a; line-height: 1.2; }
     .page-sub { color: #64748b; font-size: 12.5px; margin-top: 2px; }
 
-    /* Barra de Filtros Full Width */
     .filter-bar { background: #fff; padding: 14px 18px; border-radius: 12px; border: 1px solid var(--card-border); display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; margin-bottom: 16px; box-shadow: 0 1px 4px rgba(0,0,0,0.03); width: 100%; box-sizing: border-box; }
-    .filter-group { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 140px; }
+    .filter-group { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 130px; }
     .filter-group label { font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.4px; }
 
     .choices__inner { background: #f8fafc !important; border: 1px solid #cbd5e1 !important; border-radius: 8px !important; min-height: 38px !important; padding: 2px 6px !important; }
     .choices__list--multiple .choices__item { background-color: #004a99 !important; border: none !important; border-radius: 4px !important; font-weight: 600 !important; font-size: 11px !important; }
 
-    /* Top Cards - 6 KPIs em 100% na Tela */
     .kpi-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; margin-bottom: 16px; width: 100%; }
     .card { background: white; border-radius: 10px; padding: 12px 14px; border: 1px solid var(--card-border); box-shadow: 0 2px 5px rgba(0,0,0,0.02); display: flex; flex-direction: column; justify-content: space-between; }
     .card .title { font-size: 9.5px; color: #64748b; font-weight: 700; text-transform: uppercase; line-height: 1; margin-bottom: 4px; }
     .card .value { font-size: 16px; font-weight: 800; color: #0f172a; line-height: 1.1; }
     .card .meta { font-size: 10px; font-weight: 700; margin-top: 4px; line-height: 1.1; }
 
-    /* Grid do Ranking + Gráfico por Supervisor + Gráfico por Mês */
     .charts-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; width: 100%; }
     .panel-card { background: white; border-radius: 12px; padding: 16px; border: 1px solid var(--card-border); box-shadow: 0 2px 8px rgba(0,0,0,0.02); box-sizing: border-box; }
     .panel-title { font-size: 14px; font-weight: 800; color: #0f172a; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
 
-    /* Ranking Card Elegante com 3 Métricas */
     .ranking-list { max-height: 320px; overflow-y: auto; padding-right: 4px; }
     .ranking-item { border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 8px; background: #ffffff; padding: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.01); }
     .ranking-item:hover { border-color: #cbd5e1; background: #fafafa; }
@@ -58,7 +52,6 @@
     .metric-label { font-size: 8.5px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.2px; }
     .metric-val { font-size: 10.5px; font-weight: 800; margin-top: 1px; }
 
-    /* Tabela Excel de Grupos (Rede) */
     .table-container { overflow-x: auto; max-height: 450px; overflow-y: auto; }
     table { width: 100%; border-collapse: collapse; text-align: left; }
     thead th { position: sticky; top: 0; background: #f8fafc; color: #64748b; font-size: 10px; padding: 10px 8px; border-bottom: 2px solid #e2e8f0; text-transform: uppercase; font-weight: 700; z-index: 10; }
@@ -74,7 +67,6 @@
     .detail-table th { background: #edf2f7; color: #475569; font-size: 9px; padding: 7px; text-transform: uppercase; border-bottom: 1px solid #cbd5e1; }
     .detail-table td { padding: 6px 7px; border-bottom: 1px solid #f1f5f9; color: #334155; }
 
-    /* Responsividade Dinâmica para Notebooks */
     @media (max-width: 1480px) {
       .charts-grid { grid-template-columns: 1fr 1fr; }
       .kpi-row { grid-template-columns: repeat(3, 1fr); }
@@ -93,7 +85,7 @@
 </head>
 <body>
 
-  <!-- Topbar Superior Ocupando 100% da Largura -->
+  <!-- Topbar Superior -->
   <header class="header-bar">
     <div style="display:flex; align-items:center; gap:12px;">
       <div style="font-weight:900; font-size:20px; letter-spacing:0.5px;">JBS <span style="font-weight:300; color:#cfe0ff">FRIOS</span></div>
@@ -113,8 +105,12 @@
       </div>
     </div>
 
-    <!-- Barra de Filtros Full Width -->
+    <!-- Barra de Filtros -->
     <div class="filter-bar" id="filterBar">
+      <div class="filter-group"><label>Ano</label><select id="filter-ano" multiple>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+      </select></div>
       <div class="filter-group"><label>Mês</label><select id="filter-month" multiple>
         <option value="jan">Janeiro</option>
         <option value="fev">Fevereiro</option>
@@ -163,9 +159,8 @@
       </div>
     </div>
 
-    <!-- Grid Principal: Ranking + Gráfico por Supervisor + Gráfico por Mês -->
+    <!-- Grid Principal: Ranking + Supervisor + Evolução -->
     <div class="charts-grid">
-      <!-- Ranking de Redes -->
       <div class="panel-card">
         <div class="panel-title">
           <span>Ranking % Troca por Rede</span>
@@ -176,7 +171,6 @@
         <div class="ranking-list" id="ranking-container"></div>
       </div>
 
-      <!-- Gráfico por Supervisor (% Troca Redes) -->
       <div class="panel-card">
         <div class="panel-title">% Troca por Supervisor</div>
         <div style="height:320px; position:relative;">
@@ -184,7 +178,6 @@
         </div>
       </div>
 
-      <!-- Gráfico de Evolução por Mês (% Troca Redes) -->
       <div class="panel-card">
         <div class="panel-title">Evolução Mensal (% Troca)</div>
         <div style="height:320px; position:relative;">
@@ -193,7 +186,7 @@
       </div>
     </div>
 
-    <!-- Tabela Excel: Resultados por Grupo (Rede) -->
+    <!-- Tabela Excel por Grupo (Rede) -->
     <div class="panel-card" style="margin-bottom:24px;">
       <div class="panel-title">
         <span>Desempenho por Grupo (Rede)</span>
@@ -231,23 +224,21 @@
     let supervisorChart = null, monthChart = null;
     let expandedGroup = null, expandedRowElem = null;
 
-    // Regras de Classificação
     const isGrupoVendas = r => String(r.grupo || '').trim() === 'Vendas';
-    const isGrupoBon    = r => String(r.grupo || '').trim().toLowerCase().includes('bonifica');
-    const isGrupoDesc   = r => String(r.grupo || '').trim().toLowerCase().includes('desconto') || String(r.operacao || '').toLowerCase().includes('desconto');
 
-    // Mapeamento dos Motivos Específicos de Troca
+    // Regra Estrita: Apenas Motivos 26, 27, 5 e 8 OU Operação de Bonificação de Troca
     function isTrocaRede(r) {
-      const g = String(r.grupo || '').trim().toLowerCase();
-      const isDevGrupo = g === 'dev. vendas' || g.includes('devolu') || g.includes('troca');
-      if (!isDevGrupo) return false;
+      const op = String(r.operacao || '').trim().toLowerCase();
+      if (op.includes('bonificação - jbs frios') || op.includes('bonificação sob avarias')) {
+        return true;
+      }
 
-      const m = (String(r.motivo || '') + ' ' + String(r.operacao || '')).trim().toLowerCase();
-
+      const m = String(r.motivo || '').trim().toLowerCase();
       return (
-        m.startsWith('26') || m.startsWith('27') || m.startsWith('5') || m.startsWith('8') ||
-        m.includes('26 -') || m.includes('27 -') || m.includes('5 -') || m.includes('8 -') ||
-        m.includes('nf terc- redes') || m.includes('avaria de mercadoria') || m.includes('proxima ao vencimento') || m.includes('próxima ao vencimento')
+        m.startsWith('26 ') || m.startsWith('26-') || m.startsWith('26 -') ||
+        m.startsWith('27 ') || m.startsWith('27-') || m.startsWith('27 -') ||
+        m.startsWith('5 ')  || m.startsWith('5-')  || m.startsWith('5 -')  ||
+        m.startsWith('8 ')  || m.startsWith('8-')  || m.startsWith('8 -')
       );
     }
 
@@ -257,7 +248,13 @@
       return isDevGrupo && !isTrocaRede(r);
     }
 
-    // Retorna a quantidade de meses ativos no contexto dos dados filtrados
+    const isGrupoBon = r => {
+      if (isTrocaRede(r)) return false;
+      return String(r.grupo || '').trim().toLowerCase().includes('bonifica');
+    };
+
+    const isGrupoDesc = r => String(r.grupo || '').trim().toLowerCase().includes('desconto') || String(r.operacao || '').toLowerCase().includes('desconto');
+
     function getActiveMonthsCount(filteredData) {
       const selMonths = choices.month ? choices.month.getValue(true).map(String) : [];
       if (selMonths.length === 1) {
@@ -268,7 +265,6 @@
       return { count: count, isSingle: false, label: `Média de ${count} meses` };
     }
 
-    // Inicialização
     async function init() {
       try {
         const res = await fetch('./Uploads/Redes_clean.json');
@@ -276,9 +272,9 @@
           rawData = await res.json();
         }
 
-        // Normalização dos dados
         rawData.forEach(r => {
           r.valor = Number(r.valor || 0);
+          r.ano   = String(r.ano || '2025/2026').trim();
           r.grupo_rede = String(r.grupo_rede || 'OUTROS').trim();
           r.supervisor = String(r.supervisor || 'SEM SUPERVISOR').trim();
           r.gerente    = String(r.gerente || 'SEM GERENTE').trim();
@@ -298,7 +294,6 @@
       }
     }
 
-    // Filtros Choices.js
     function setupFilters() {
       const config       = { removeItemButton: true, itemSelectText: '', shouldSort: true };
       const noSortConfig = { removeItemButton: true, itemSelectText: '', shouldSort: false, shouldSortItems: false };
@@ -308,6 +303,7 @@
       const gers  = [...new Set(rawData.map(r => r.gerente))].filter(Boolean).sort();
       const cids  = [...new Set(rawData.map(r => r.cidade))].filter(Boolean).sort();
 
+      choices.ano        = new Choices('#filter-ano',        noSortConfig);
       choices.month      = new Choices('#filter-month',      noSortConfig);
       choices.grupo_rede = new Choices('#filter-grupo-rede', config).setChoices(redes.map(v => ({ value: v, label: v })));
       choices.supervisor = new Choices('#filter-supervisor', config).setChoices(sups.map(v => ({ value: v, label: v })));
@@ -321,6 +317,7 @@
 
     function getFilteredData() {
       const getVal = c => (c && c.getValue) ? c.getValue(true).map(String) : [];
+      const anos   = getVal(choices.ano);
       const months = getVal(choices.month).map(v => v.toLowerCase());
       const redes  = getVal(choices.grupo_rede);
       const sups   = getVal(choices.supervisor);
@@ -328,6 +325,7 @@
       const cids   = getVal(choices.cidade);
 
       return rawData.filter(r => {
+        if (anos.length   && !anos.includes(String(r.ano))) return false;
         if (months.length && !months.includes(String(r.mes).toLowerCase())) return false;
         if (redes.length  && !redes.includes(r.grupo_rede)) return false;
         if (sups.length   && !sups.includes(r.supervisor)) return false;
@@ -337,7 +335,6 @@
       });
     }
 
-    // Atualiza Tela
     function updateDashboard() {
       const filtered = getFilteredData();
       renderKPIs(filtered);
@@ -347,7 +344,6 @@
       renderTable(filtered);
     }
 
-    // Top KPIs
     function renderKPIs(data) {
       let bruto = 0, trocas = 0, dev = 0, bon = 0, desc = 0;
 
@@ -378,7 +374,6 @@
       document.getElementById('kpi-desc-pct').innerText  = fmtPct(pctDesc) + ' das Vendas';
     }
 
-    // Ranking de Redes
     function renderRanking(data) {
       const monthInfo = getActiveMonthsCount(data);
       const modeBadge = document.getElementById('ranking-mode-badge');
@@ -445,7 +440,6 @@
       `).join('');
     }
 
-    // Gráfico por Supervisor (% Troca Redes)
     function renderSupervisorChart(data) {
       const ctx = document.getElementById('supervisorChart').getContext('2d');
       if (supervisorChart) supervisorChart.destroy();
@@ -463,16 +457,13 @@
         return { sup, pct, trocas: d.trocas, bruto: d.bruto };
       }).sort((a, b) => b.pct - a.pct);
 
-      const labels = sorted.map(s => s.sup);
-      const dataset = sorted.map(s => s.pct);
-
       supervisorChart = new Chart(ctx, {
         type: 'bar',
         data: {
-          labels: labels,
+          labels: sorted.map(s => s.sup),
           datasets: [{
             label: '% Troca Redes',
-            data: dataset,
+            data: sorted.map(s => s.pct),
             backgroundColor: '#004a99',
             borderRadius: 6,
             barPercentage: 0.6
@@ -489,18 +480,6 @@
               formatter: (v) => v > 0 ? v.toFixed(1).replace('.', ',') + '%' : '',
               font: { weight: 'bold', size: 10.5 },
               color: '#0f172a'
-            },
-            tooltip: {
-              callbacks: {
-                label: (ctx) => {
-                  const item = sorted[ctx.dataIndex];
-                  return [
-                    ` % Troca: ${fmtPct(item.pct)}`,
-                    ` Trocas: ${fmtBRL(item.trocas)}`,
-                    ` Venda Bruta: ${fmtBRL(item.bruto)}`
-                  ];
-                }
-              }
             }
           },
           scales: {
@@ -511,7 +490,6 @@
       });
     }
 
-    // Gráfico de Evolução Mensal (% Troca Redes)
     function renderMonthChart(data) {
       const ctx = document.getElementById('monthChart').getContext('2d');
       if (monthChart) monthChart.destroy();
@@ -531,26 +509,19 @@
         return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
       });
 
-      const labels = sortedMonths.map(m => m.toUpperCase());
-      const dataset = sortedMonths.map(m => {
-        const d = map[m];
-        return d.bruto ? (d.trocas / d.bruto) * 100 : 0;
-      });
-
       monthChart = new Chart(ctx, {
         type: 'line',
         data: {
-          labels: labels,
+          labels: sortedMonths.map(m => m.toUpperCase()),
           datasets: [{
             label: '% Troca Mensal',
-            data: dataset,
+            data: sortedMonths.map(m => map[m].bruto ? (map[m].trocas / map[m].bruto) * 100 : 0),
             borderColor: '#dc2626',
             backgroundColor: 'rgba(220, 38, 38, 0.1)',
             fill: true,
             tension: 0.3,
             pointRadius: 5,
-            pointBackgroundColor: '#dc2626',
-            pointHoverRadius: 7
+            pointBackgroundColor: '#dc2626'
           }]
         },
         options: {
@@ -564,20 +535,6 @@
               formatter: (v) => v > 0 ? v.toFixed(1).replace('.', ',') + '%' : '',
               font: { weight: 'bold', size: 10.5 },
               color: '#dc2626'
-            },
-            tooltip: {
-              callbacks: {
-                label: (ctx) => {
-                  const m = sortedMonths[ctx.dataIndex];
-                  const item = map[m];
-                  const pct = item.bruto ? (item.trocas / item.bruto) * 100 : 0;
-                  return [
-                    ` % Troca: ${fmtPct(pct)}`,
-                    ` Trocas: ${fmtBRL(item.trocas)}`,
-                    ` Venda Bruta: ${fmtBRL(item.bruto)}`
-                  ];
-                }
-              }
             }
           },
           scales: {
@@ -588,24 +545,22 @@
       });
     }
 
-    // Tabela Excel por Grupo (Rede)
     function renderTable(data) {
       const map = {};
       data.forEach(r => {
         const g = r.grupo_rede;
-        if (!map[g]) map[g] = { bruto: 0, trocas: 0, dev: 0, bon: 0, desc: 0, rows: [] };
+        if (!map[g]) map[g] = { bruto: 0, trocas: 0, dev: 0, bon: 0, desc: 0 };
         if (isGrupoVendas(r)) map[g].bruto  += r.valor;
         if (isTrocaRede(r))   map[g].trocas += r.valor;
         if (isOutraDev(r))    map[g].dev    += r.valor;
         if (isGrupoBon(r))    map[g].bon    += r.valor;
         if (isGrupoDesc(r))   map[g].desc   += r.valor;
-        map[g].rows.push(r);
       });
 
       const list = Object.entries(map).map(([grupo, d]) => {
         const liq = d.bruto - d.trocas - d.dev - d.bon;
         const pctTroca = d.bruto ? (d.trocas / d.bruto) * 100 : 0;
-        return { grupo, bruto: d.bruto, trocas: d.trocas, dev: d.dev, bon: d.bon, desc: d.desc, liq, pctTroca, rows: d.rows };
+        return { grupo, bruto: d.bruto, trocas: d.trocas, dev: d.dev, bon: d.bon, desc: d.desc, liq, pctTroca };
       }).sort((a, b) => b.bruto - a.bruto);
 
       const tbody = document.getElementById('table-body');
@@ -615,7 +570,7 @@
       }
 
       tbody.innerHTML = list.map(item => `
-        <tr class="group-row" data-grupo="${encodeURIComponent(item.grupo)}">
+        <tr class="group-row">
           <td style="font-weight:700; color:#004a99">${item.grupo}</td>
           <td>${fmtBRL(item.bruto)}</td>
           <td style="font-weight:700; color:#16a34a">${fmtBRL(item.liq)}</td>
@@ -634,7 +589,6 @@
       expandedRowElem = null;
     }
 
-    // Expansão da Linha para Exibir Detalhes dos Parceiros
     window.toggleDetail = function(event, encodedGrupo) {
       event.stopPropagation();
       const grupoName = decodeURIComponent(encodedGrupo);
@@ -647,9 +601,7 @@
         return;
       }
 
-      if (expandedRowElem) {
-        expandedRowElem.remove();
-      }
+      if (expandedRowElem) expandedRowElem.remove();
 
       expandedGroup = grupoName;
 
@@ -670,11 +622,7 @@
             bairro: r.bairro,
             supervisor: r.supervisor,
             gerente: r.gerente,
-            bruto: 0,
-            trocas: 0,
-            dev: 0,
-            bon: 0,
-            desc: 0
+            bruto: 0, trocas: 0, dev: 0, bon: 0, desc: 0
           };
         }
         if (isGrupoVendas(r)) partnerMap[key].bruto  += r.valor;
@@ -687,12 +635,10 @@
       const partnerList = Object.values(partnerMap).map(p => {
         const liqTotal = p.bruto - p.trocas - p.dev - p.bon;
         p.pctTroca = p.bruto ? (p.trocas / p.bruto) * 100 : 0;
-        
         p.brutoDisplay  = p.bruto / divider;
         p.liqDisplay    = liqTotal / divider;
         p.trocasDisplay = p.trocas / divider;
         p.descDisplay   = p.desc / divider;
-
         return p;
       }).sort((a, b) => b.bruto - a.bruto);
 
